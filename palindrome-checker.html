@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome-Checker</title>
+</head>
+
+<body>
+    <form id="word-input-form">
+        <input id="word-input" placeholder="Enter your word here">
+        <input type="submit" value="submit" id="submit-word">
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let inputForm = document.getElementById('word-input-form');
+            
+            // console.log(word)
+            // console.log(typeof (word))
+            function checkPalindrome(string) {
+                string = string.toLowerCase().replace(/\s/, '');
+                console.log(string);
+                let splitString = string.split('');
+                console.log(splitString);
+                let reversedString = [];
+                for (let i = splitString.length - 1; i >= 0; i--) {
+                    reversedString.push(splitString[i]);
+                }
+                console.log(reversedString)
+                reversedString = reversedString.join('');
+                splitString = splitString.join('');
+                console.log(reversedString)
+                console.log(splitString)
+                let resultElement = document.createElement('span');
+                inputForm.appendChild(resultElement);
+                if (reversedString === splitString) {
+                    // let resultElement = document.createElement('span');
+                    resultElement.innerHTML = 'your string is a palindrome.';
+                    // inputForm.appendChild(resultElement);
+                }else{
+                    // let resultElement = document.createElement('span');
+                    resultElement.innerHTML = 'your string is not a palindrome.';
+                    // inputForm.appendChild(resultElement);
+                }
+                // return (reversedString).join('') === splitString.join('');    
+            };
+
+            document.getElementById('submit-word').addEventListener('click', (event) => {
+                event.preventDefault();
+                let word = document.getElementById('word-input').value;
+                checkPalindrome(word);
+            })
+
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>
